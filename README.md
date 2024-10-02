@@ -1,7 +1,9 @@
 # 🐌프로젝트
+
 ## 프로젝트 주제
-  유기동물 입양 프로젝트 
+
   ![logo](https://github.com/user-attachments/assets/fc4e6bd8-7330-445d-880d-656fbbaf4e50)
+
 ## 팀원 소개 
 
   |김윤정	|김현중	|박성무	| 윤다영
@@ -12,6 +14,9 @@
   | [SUB] Back | [SUB] Front | [SUB] Front | [SUB] Back
 
 ## 프로젝트 진행 날짜 
+
   ~ 10월 18일 금요일
+
 ## 프로젝트 발표 예정일 
+
   10월 21일 월요일
