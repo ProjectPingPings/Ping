@@ -49,6 +49,9 @@ local.properties
 .loadpath
 .recommenders
 
+# 스프링 oauth 보안 설정 제외
+application-oauth.properties
+
 # External tool builders
 .externalToolBuilders/
 
