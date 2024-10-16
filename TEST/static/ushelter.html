@@ -106,7 +106,7 @@
 							<li><a href="mypage.html" class="mx-3"> <iconify-icon
 										icon="healthicons:person" class="fs-4"></iconify-icon>
 							</a></li>
-					
+
 
 
 						</ul>
@@ -130,11 +130,9 @@
 						<div class="offcanvas-body justify-content-center">
 							<ul
 								class="navbar-nav menu-list list-unstyled d-flex gap-md-3 mb-0">
-
-								<li class="nav-item"><a href="hope.html" class="nav-link">반려동물
-										찾아요</a></li>
+								<li class="nav-item"><a href="pet.html" class="nav-link">입양
+										대기 동물 관리</a></li>
 								<br>
-
 								<li class="nav-item"><a href="ushelter.html"
 									class="nav-link">보호소 방문 예약</a></li>
 								<br>
@@ -171,26 +169,26 @@
    <!-- 중간 -->
    <section style="background: rgb(244, 243, 224)">
    <div class="container " >
-        <h1 class="text-center fw-bold   mb-5 pt-5">보호소 방문 예약</h1>
+        <h1 class="text-center fw-bold mb-5 pt-5">보호소 방문 예약</h1>
         
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4><i class="fas fa-calendar-plus me-2"></i>새 예약 등록</h4>
+                        <h4 class="fw-bold"><i class="fas fa-calendar-plus me-2"></i>새 예약 등록</h4>
                     </div>
                     <div class="card-body">
                         <form id="reservationForm">
                             <div class="mb-5">
-                                <label for="visitorName" class="form-label">이름</label>
+                                <label for="visitorName" class="form-label fw-bold">이름</label>
                                 <input type="text" class="form-control" id="visitorName" required>
                             </div>
                             <div class="mb-5">
-                                <label for="visitorPhone" class="form-label">동물번호</label>
+                                <label for="visitorPhone" class="form-label fw-bold">동물 번호</label>
                                 <input type="tel" class="form-control" id="visitorPhone" required>
                             </div>
                             <div class="mb-5">
-                                <label for="visitDate" class="form-label">방문 날짜</label>
+                                <label for="visitDate" class="form-label fw-bold">방문 날짜</label>
                                <input id="hdate" type="datetime-local" name="hdate">
                             </div>
                           
@@ -203,18 +201,18 @@
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4><i class="fas fa-calendar-check me-2"></i>현재 예약 상태</h4>
+                        <h4 class="fw-bold"><i class="fas fa-calendar-check me-2"></i>현재 예약 상태</h4>
                     </div>
                     <div class="card-body">
                         <div id="currentReservation">
-                            <p>현재 예약: <strong>{방문날짜}</strong></p>
-                            <p>예약자아이디: <strong>{이름}</strong></p>
-                            <p>동물번호: <strong>{}</strong></p>
+                            <p class="fw-bold">현재 예약 : <strong>{방문날짜}</strong></p>
+                            <p class="fw-bold">예약자 아이디 : <strong>{이름}</strong></p>
+                            <p class="fw-bold">동물번호 : <strong>{}</strong></p>
                  
-                            <p>동물보호소 위치: <strong>{}</strong></p>
+                            <p class="fw-bold">동물 보호소 위치 : <strong>{}</strong></p>
                  
-                            <button class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#editReservationModal">예약 변경</button>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelReservationModal">예약 취소</button>
+                            <button class="btn btn-warning me-2 fw-bold" data-bs-toggle="modal" data-bs-target="#editReservationModal">예약 변경</button>
+                            <button class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#cancelReservationModal">예약 취소</button>
                         </div>
                         <div id="noReservation" style="display: none;">
                             <p>현재 예약이 없습니다.</p>
@@ -266,7 +264,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
-                    <button type="button" class="btn btn-danger" onclick="cancelReservation()">예, 취소합니다</button>
+                    <button type="button" class="btn btn-danger" onclick="cancelReservation()">예, 취소합니다.</button>
                 </div>
             </div>
         </div>
