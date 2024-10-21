@@ -3,14 +3,14 @@ $(document).ready(function(){
 	        event.preventDefault();
 	        
 	        let bnum = $("#bnum").val();
-	        let pet_user_id = $("#pet_user_id").val();
+	        let userid = $("#userid").val();
 	        let btitle = $("#btitle").val();
 	        let bcontent = $("#bcontent").val();
 	        let cate_no = Number($("#cate_no").val());
 
 	        let insert = {
 	            bnum: bnum,
-	            pet_user_id: pet_user_id,
+	            userid: userid,
 	            btitle: btitle,
 	            bcontent: bcontent,
 	            cate_no: cate_no
@@ -20,11 +20,11 @@ $(document).ready(function(){
 	        petboard.insert(insert, function(result){
 	            console.log(result);
 	            if (cate_no === 1) {
-	                location.replace('/notice.html');
+	                location.replace('/pboard/notice');
 	            } else if (cate_no === 2) {
-	                location.replace('/qna.html');
+	                location.replace('/pboard/qna');
 	            } else if (cate_no === 3) {
-	                location.replace('/areview.html');
+	                location.replace('/pboard/areview');
 	            } else {
 	                console.log("알 수 없는 카테고리 번호입니다.");
 	            }

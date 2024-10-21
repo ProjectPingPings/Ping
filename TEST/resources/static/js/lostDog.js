@@ -48,7 +48,7 @@ let lostDog = function() {
 				if (callback) {
 					callback(response);
 				}
-				let url = '/pet.html';
+				let url = '/pet';
 				location.replace(url);
 			},
 			error: function(xhr, status, error) {
@@ -80,7 +80,7 @@ let lostDog = function() {
 
 	function del(desertionNo) {
 
-		$.ajax({
+		return $.ajax({
 			type: "DELETE",
 			url: "/pet/" + desertionNo,
 			success: function(result) {

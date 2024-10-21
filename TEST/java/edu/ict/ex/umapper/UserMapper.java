@@ -1,5 +1,7 @@
 package edu.ict.ex.umapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,7 +15,12 @@ import edu.ict.ex.uvo.UserVO;
 public interface UserMapper  {
 	
 	UserVO getUser(String userid);
+	UserVO getUserHope(String userid);
+	UserVO getUserBoard(String userid);
 	
+	@Select("SELECT * FROM users")
+	List<UserVO> getAllUsers();
+        
     @Select("SELECT COUNT(*) FROM users WHERE userid = #{userid}")
     int countUserById(String userid);
     

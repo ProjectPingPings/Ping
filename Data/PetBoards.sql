@@ -1,0 +1,14 @@
+CREATE TABLE PET_BOARDS (
+    BNUM          NUMBER,
+    BTITLE        VARCHAR2(255 BYTE),
+    BCONTENT      CLOB,
+    BHIT          VARCHAR2(50 BYTE),
+    BSTEP         NUMBER,
+    BINDENT       NUMBER,
+    BGROUP        NUMBER,
+    BDATE         VARCHAR2(20 BYTE),
+    USERID   VARCHAR2(50 BYTE) NOT NULL,
+    CATE_NO       NUMBER NOT NULL
+);
+
+commit;

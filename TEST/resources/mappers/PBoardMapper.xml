@@ -14,7 +14,14 @@ SELECT
     PET_BOARDS.BCONTENT, 
     PET_BOARDS.BHIT, 
     PET_BOARDS.BDATE,
-    PET_BOARDS.PET_USER_ID
+    PET_BOARDS.USERID,
+    PET_BOARDS.BINDENT,
+    PET_BOARDS.BSTEP,
+    PET_BOARDS.BGROUP,
+    CASE 
+        WHEN PET_BOARDS.BINDENT > 0 THEN '답글' 
+        ELSE '원글' 
+    END AS POST_TYPE
 FROM 
     PET_BOARD_CATEGORIES
 LEFT JOIN 
@@ -22,9 +29,12 @@ LEFT JOIN
 WHERE 
     PET_BOARD_CATEGORIES.CATE_NO = #{cate_no}
 ORDER BY 
-    PET_BOARDS.BNUM DESC
+    PET_BOARDS.BGROUP,   
+    PET_BOARDS.BSTEP ASC, 
+    PET_BOARDS.BINDENT ASC
 
-	]]>
+   ]]>
+
 	</select>
 
 	<resultMap id="PetBoardsCategoriesMap" type="edu.ict.ex.vo.PetBoardsCategoriesJoinVO">
@@ -41,7 +51,7 @@ ORDER BY
 		<result property="bindent" column="bindent" />
 		<result property="bgroup" column="bgroup" />
 		<result property="bdate" column="bdate" />
-		<result property="pet_user_id" column="pet_user_id" />
+		<result property="userid" column="userid" />
 		<result property="cate_no" column="cate_no" />
 	</resultMap>
 
@@ -56,10 +66,11 @@ ORDER BY
 	 <update id="modify">
 		<![CDATA[ UPDATE PET_BOARDS SET btitle = #{btitle}, bcontent = #{bcontent} WHERE bnum = #{bnum} ]]> 
 	</update>
-	 <insert id="insert">
-	 <![CDATA[ INSERT INTO PET_BOARDS (bnum, btitle, bcontent, bhit, bstep, bindent, bgroup, bdate, pet_user_id, cate_no) 
-VALUES (bnum_seq.NEXTVAL,#{btitle},#{bcontent},10, 0, 0, 1, SYSDATE, #{pet_user_id}, #{cate_no} )
-		]]> 
+    <insert id="insert">
+	    <![CDATA[ 
+	    INSERT INTO PET_BOARDS (bnum, btitle, bcontent, bhit, bstep, bindent, bgroup, bdate, userid, cate_no) 
+	    VALUES (bnum_seq.NEXTVAL, #{btitle}, #{bcontent}, 0, 0, 0, bnum_seq.CURRVAL, SYSDATE, #{userid}, #{cate_no} )
+	    ]]>
 	</insert>
 	
 	<delete id="remove"> 
@@ -67,4 +78,21 @@ VALUES (bnum_seq.NEXTVAL,#{btitle},#{bcontent},10, 0, 0, 1, SYSDATE, #{pet_user_
 		delete from PET_BOARDS where bnum = #{bnum}
 	]]> 
 	</delete> 
+	
+	<update id="updateHit">
+      UPDATE PET_BOARDS SET BHIT = BHIT + 1 WHERE bnum = #{bnum}
+	</update>
+	
+   <update id="updateShape">
+	    <![CDATA[
+	              update PET_BOARDS set bstep = bstep+1 where bgroup = #{bgroup} and bstep > #{bstep}     
+	    ]]>
+    </update> 
+
+     <insert id="insertReply">
+	    <![CDATA[
+	    INSERT INTO PET_BOARDS (bnum, btitle, bcontent, bhit, bstep, bindent, bgroup, bdate, userid, cate_no) 
+	    VALUES (bnum_seq.NEXTVAL, #{btitle}, #{bcontent}, 0, #{bstep}+1, #{bindent} + 1, #{bgroup}  , SYSDATE, #{userid}, 2 )
+	    ]]>
+</insert>
 </mapper>
