@@ -2,6 +2,7 @@ package edu.ict.ex.ucontroller;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -177,10 +178,11 @@ public class UserController {
             return "user/deleteForm";
         }
     }
+	
     
     // 회원정보 수정
     @GetMapping("/modify")
-    public String modify(Model model, Principal principal) { // 수정: Principal 추가
+    public String modify(Model model, Principal principal) { 
         log.info("modify()..");
         if (principal != null) {
             String userid = principal.getName(); // 로그인된 사용자 ID
@@ -214,5 +216,11 @@ public class UserController {
 		return entity;
 	}
 	
+	@GetMapping("/admin/userList")
+	public String userList(Model model) {
+	    List<UserVO> userList = userService.getAllUsers(); 
+	    model.addAttribute("userList", userList);
+	    return "admin/userList";
+	}
     
 }

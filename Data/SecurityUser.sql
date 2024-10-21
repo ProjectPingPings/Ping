@@ -23,28 +23,21 @@ commit;
 
 select * from users;
 
+insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
+values ('admin','admin','admin','010-1111-1111','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','admin@ict.com');
+insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
+values ('user','user','user','010-1111-2222','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','user@ict.com');
+insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
+values ('member','member','member','010-1111-3333','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','member@ict.com');
+insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
+values ('abc','abc','홍길동','010-1111-4444','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','member@ict.com');
+
+
 insert into authorities(userid,authority) values('user','ROLE_USER');
 insert into authorities(userid,authority) values('member','ROLE_MANAGER');
 insert into authorities(userid,authority) values('admin','ROLE_MANAGER');
 insert into authorities(userid,authority) values('admin','ROLE_ADMIN');
 insert into authorities(userid,authority) values('admin','ROLE_USER');
-insert into authorities(userid,authority) values('abc','ROLE_USER');
-insert into authorities(userid,authority) values('1234','ROLE_USER');
-
-insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
-values ('admin','admin','admin','010-1111-1111','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','admin@ict.com');
-
-insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
-values ('user','user','user','010-1111-2222','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','user@ict.com');
-
-insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
-values ('member','member','member','010-1111-3333','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','member@ict.com');
-
-insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail) 
-values ('abc','abc','홍길동','010-1111-4444','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','member@ict.com');
-
-insert into users(userid,password,uname,utel,zipcode,uadr,uadrdetail,uemail)
-values ('1234','1234','홍길순','010-1111-5555','04794','서울시 성동구 아차산로 113','2층 한국ICT인재개발원 성수센터','user@ict.com');
 
 
 select * from authorities;

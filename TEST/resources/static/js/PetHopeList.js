@@ -6,14 +6,14 @@ $(document).ready(function() {
         let hopeno = $("#hopeno").val(); // 필요한 경우 추가
         let desertionNo = $("#desertionNo").val();
         let hdate = $("#hdate").val(); // 'YYYY-MM-DDTHH:MM' 형식으로 반환됨
-        let pet_user_id = $("#pet_user_id").val();
+        let userid = $("#userid").val();
 
         // insert 객체 생성
         let insert = {
             hopeno: hopeno, // 필요에 따라 사용
             desertionNo: desertionNo,
             hdate: hdate, // 이 값을 서버에 전송
-            pet_user_id: pet_user_id
+            userid: userid
         };
 
         // 콘솔에 출력 (디버깅 용도)
@@ -46,13 +46,13 @@ $(document).ready(function() {
                         <div class="card-body" style="background-color: #f8f9fa;">
                             <h5 class="card-title">희망자 번호: ${this.petHopeVO.hopeno}</h5>
                             <p class="card-text">유기 동물 번호: 
-                                <a href="/pet_content_view.html?desertionNo=${this.petHopeVO.desertionNo}">
+                                <a href="/pet/pet_content_view?desertionNo=${this.petHopeVO.desertionNo}">
                                     ${this.petHopeVO.desertionNo}
                                 </a>
                             </p>
                             <p class="card-text">보호소명: ${this.petVO.careNm}</p>
                             <p class="card-text">방문 희망 날짜: ${formattedDateTime}</p> <!-- 포맷팅된 날짜와 시간 -->
-                            <p class="card-text">희망자 ID: ${this.petHopeVO.pet_user_id}</p>
+                            <p class="card-text">희망자 ID: ${this.petHopeVO.userid}</p>
                             <button id="${this.petHopeVO.hopeno}" class="btn btn-danger btn_delete">삭제</button>
                         </div>
                     </div>

@@ -7,25 +7,28 @@ $(document).ready(function() {
 
 		// 결과를 순회하며 HTML 생성
 		$(result).each(function() {
-			htmls += '<div class="col-md-3 col-sm-3">';
+			htmls += '<div class="col-lg-3 col-md-4 col-sm-12">';
 			htmls += '<div class="card shadow-sm mb-3">';
-			htmls += '<a href="/pet_content_view.html?desertionNo=' + this.desertionNo + '"><img src="' + this.filename + '" alt="Image" style="width: 100%; height: 150px;"></a>';
+			htmls += '<a href="/pet/pet_content_view?desertionNo=' + this.desertionNo + '"><img src="' + this.popfile + '" alt="Image" class="img-fluid"></a>';
 			htmls += '<div class="card-body bg-light">';
-			htmls += '<p class="card-text fw-bold">';
-			htmls += '성별: <span class="pet-gender">' + this.sexCd + '</span><br>'; // 성별
-			htmls += '나이: <span class="pet-age">' + this.age + '</span><br>'; // 나이
-			htmls += '품종: <span class="pet-breed">' + this.kindCd + '</span><br>'; // 품종
-			htmls += '지역: <span class="pet-location">' + this.happenPlace + '</span><br>'; // 지역
-			htmls += '상황: <span class="pet-situation">' + this.processState + '</span><br>'; // 상황
-			htmls += '</p>';
-			htmls += '<div class="d-flex justify-content-between align-items-center">';
-			htmls += '<button id="' + this.desertionNo + '" type="button" class="btn_delete">삭제</button>';
-			htmls += '</div></div></div></div>'; // 카드 닫기
+			htmls += '<div class="pet-gender text-light p-2 m-1"> 성별: ' + this.sexCd + '</div>'; // 성별
+			htmls += '<div class="pet-age text-light p-2 m-1"> 나이: ' + this.age + '</div>'; // 나이
+			htmls += '<div class="pet-breed text-light p-2 m-1"> 품종: ' + this.kindCd + '</div>'; // 품종
+			htmls += '<div class="pet-location text-light p-2 m-1"> 지역: ' + this.happenPlace + '</div>'; // 지역
+			htmls += '<div class="pet-situation text-light p-2 m-1"> 상황: ' + this.processState + '</div>'; // 상황
+			// 삭제 버튼은 ROLE_ADMIN만 보임
+			htmls += '<div class="pet-delete text-light p-2 m-1 text-center">';
+			htmls += '<sec:authorize access="hasRole(\'ROLE_ADMIN\')">';
+			htmls += '<span id="' + this.desertionNo + '" type="button" class="btn_delete">삭제</span>';
+			htmls += '</sec:authorize>';
+			htmls += '</div>';
+			htmls += '</div></div></div>'; // 카드 닫기
 		}); // each end
 
 		// 생성된 HTML을 리스트에 추가
 		console.log(htmls)
 		$('#list-table').append(htmls);
+		
 	}
 
 	// 예시로 lostDog() 호출 후 listCallback을 사용하는 코드
@@ -35,12 +38,16 @@ $(document).ready(function() {
 	$(document).on("click", ".btn_delete", function() {
 		const petId = $(this).attr("id");
 		console.log(petId);
+		
+		// 삭제 확인 대화 상자 표시
+		if (confirm("정말 삭제할까요?")) {
+			// 서버에 삭제 요청
+			let pet = lostDog();
+			pet.del(petId).then(() => {
+				// 삭제 후 리스트를 다시 불러옴
+				pet.list(listCallback);
+			});
+		}
 
-		// 카드 삭제
-		$(this).closest('.col-md-3').remove();
-
-		// 서버에 삭제 요청
-		let pet = lostDog();
-		pet.del(petId);
 	});
 });

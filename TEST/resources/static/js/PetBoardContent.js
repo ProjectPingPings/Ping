@@ -40,7 +40,7 @@ $(document).ready(function() {
                         
                         <label for="bcontent" class="mt-3">내용</label>
                         <textarea id="bcontent" class="form-control" rows="4">${petboards.bcontent}</textarea>
-                        <p class="card-text mt-3">작성자: ${petboards.pet_user_id}</p>
+                        <p class="card-text mt-3">작성자: ${petboards.userid}</p>
                         <p class="card-text mt-3">조회수: ${petboards.bhit}</p>
                         <p class="card-text">카테고리: ${h1Text}</p>
                         <input type="submit" id="modifyButton" class="btn btn-primary mt-3" value="수정">
@@ -78,11 +78,11 @@ $(document).ready(function() {
 	            console.log(result); // 응답 확인
 				 let cateno = parseInt($("#input_hidden").val(), 10);
 				if (cateno === 1) {
-					                location.replace('/notice.html');
+					                location.replace('/pboard/notice');
 					            } else if (cateno === 2) {
-					                location.replace('/qna.html');
+					                location.replace('/pboard/qna');
 					            } else if (cateno === 3) {
-					                location.replace('/areview.html');
+					                location.replace('/pboard/areview');
 					            } else {
 					                console.log("알 수 없는 카테고리 번호입니다.");
 					            }

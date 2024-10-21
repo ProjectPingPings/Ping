@@ -1,0 +1,14 @@
+CREATE TABLE "HOPELIST" (
+    "HOPENO"      NUMBER       NOT NULL,
+    "desertionNo" NUMBER       NOT NULL,
+    "HDATE"       DATE         NULL,
+    "USERID" VARCHAR2(255) NOT NULL
+);
+
+CREATE SEQUENCE hopeno_seq
+START WITH 1
+INCREMENT BY 1;
+
+commit;
+
+INSERT INTO "HOPELIST" ("HOPENO", "desertionNo", "HDATE", "") VALUES (hopeno_seq.NEXTVAL, 500, TO_DATE(SYSDATE, 'YYYY-MM-DD'), 'YOUNDADA');
